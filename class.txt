@@ -1,3 +1,2 @@
 classname=com.reflect.moudle.Person
-methodname=staticMethod
-what happend
+methodname=staticMetho
