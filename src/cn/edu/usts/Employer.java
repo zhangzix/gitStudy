@@ -1,6 +1,6 @@
 package cn.edu.usts;
 
-public class Employer {
+public abstract class Employer {
     private int id;
     private String name;
 
@@ -27,6 +27,8 @@ public class Employer {
     public void setName(String name) {
         this.name = name;
     }
+
+    public abstract String getStatus();
 
     @Override
     public String toString() {

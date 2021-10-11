@@ -11,6 +11,11 @@ public class FullTimeEmployer extends Employer {
         super();
     }
 
+    @Override
+    public String getStatus() {
+        return "FullTime";
+    }
+
     public FullTimeEmployer(int id, String name, int yearPay) {
         super(id, name);
         this.yearPay = yearPay;

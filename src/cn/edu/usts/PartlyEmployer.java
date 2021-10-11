@@ -16,6 +16,11 @@ public class PartlyEmployer extends Employer {
     }
 
     @Override
+    public String getStatus() {
+        return "Partly";
+    }
+
+    @Override
     public String toString() {
         return "PartlyEmployer{" +
                 "ID='" + super.getId() + '\'' +
