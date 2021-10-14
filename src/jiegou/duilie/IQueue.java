@@ -15,4 +15,6 @@ public interface IQueue {
     public void offer(Object x) throws Exception;
 
     public Object poll();
+
+    public void display();
 }

@@ -4,18 +4,19 @@ package jiegou;
  * 线性表的8个基本操作接口
  */
 public interface IList {
-    public void clear();
+    void clear();
 
-    public boolean isEmpty();
-    public int length();
+    boolean isEmpty();
 
-    public Object get(int i);
+    int length();
 
-    public void insert(int i, Object obj);
+    Object get(int i);
 
-    public void remove(int i);
+    void insert(int i, Object obj);
 
-    public int indexOf(Object x);
+    void remove(int i);
 
-    public void display();
+    int indexOf(Object x);
+
+    void display();
 }
