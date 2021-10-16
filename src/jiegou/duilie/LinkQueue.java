@@ -2,8 +2,6 @@ package jiegou.duilie;
 
 import jiegou.Node;
 
-import java.util.Random;
-
 public class LinkQueue implements IQueue {
     private Node front;
     private Node rear;
