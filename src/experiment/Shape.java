@@ -6,6 +6,8 @@ public interface Shape {
     double getArea();//求一个形状的面积
 
     double getPerimeter();//求一个形状的周长
+
+    String getStatus();//获取类型
 }
 
 class Circle implements Shape {
@@ -23,6 +25,11 @@ class Circle implements Shape {
     @Override
     public double getPerimeter() {
         return 2 * radius * Math.PI;
+    }
+
+    @Override
+    public String getStatus() {
+        return "Circle";
     }
 
     @Override
@@ -55,6 +62,11 @@ class Square implements Shape {
     }
 
     @Override
+    public String getStatus() {
+        return "Square";
+    }
+
+    @Override
     public String toString() {
         return "长方形{" +
                 "长=" + length +
@@ -66,14 +78,18 @@ class Square implements Shape {
 }
 
 class Test {
+    private static String getShape(Shape shape) {
+        return shape.getStatus();
+    }
+
     public static void main(String[] args) {
-        Random random = new Random();
         Shape shape;
-        if (random.nextInt() % 2 == 0) {//如果随机数为偶数则生成圆对象
+        if (new Random().nextInt() % 2 == 0) {//偶数圆
             shape = new Circle(5);
-        } else {//否则生成长方形对象
+        } else {//否则长方形
             shape = new Square(10, 5);
         }
+        System.out.println(getShape(shape));
         System.out.println(shape);
     }
 }
