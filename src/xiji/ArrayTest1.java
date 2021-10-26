@@ -36,10 +36,10 @@ public class ArrayTest1 {
                     count++;
             }
             if (count > (arr.length / 2)) {
-                res = arr[i];break;
+                res = arr[i];
+                break;
             }
         }
         System.out.println(res);
-
     }
 }
