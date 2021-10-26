@@ -15,13 +15,13 @@ public class ApplicationTest {
         set.add(stu2);
         set.add(stu3);
         Iterator iterator = set.iterator();
-        while (iterator.hasNext()){
+        while (iterator.hasNext()) {
             System.out.println(iterator.next());
         }
     }
 }
 
-class Stu implements Comparable {
+class Stu implements Comparable<Stu> {
     public int stuNo;
     public String name;
     public String grade;
@@ -31,6 +31,7 @@ class Stu implements Comparable {
         this.name = name;
         this.grade = grade;
     }
+
     @Override
     public String toString() {
         return "Stu{" +
@@ -39,9 +40,9 @@ class Stu implements Comparable {
                 ", grade='" + grade + '\'' +
                 '}';
     }
+
     @Override
-    public int compareTo(Object o) {
-        Stu stu = (Stu) o;
+    public int compareTo(Stu stu) {
         return this.stuNo - stu.stuNo;
     }
 }
