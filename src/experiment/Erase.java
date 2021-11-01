@@ -57,7 +57,6 @@ class RubberPencil extends Pencil implements Erase {
         System.out.println("使用" + getType() + "橡皮铅笔书写: " + s);
     }
 
-
     @Override
     public String toString() {
         String r = "一直橡皮铅笔";

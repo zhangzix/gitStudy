@@ -1,12 +1,11 @@
 package experiment;
 
-import java.util.Iterator;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 public class ApplicationTest {
 
     public static void main(String[] args) {
+
         Stu stu1 = new Stu(110, "张三", "男");
         Stu stu2 = new Stu(119, "李四", "男");
         Stu stu3 = new Stu(109, "芙蓉", "女");
@@ -41,8 +40,12 @@ class Stu implements Comparable<Stu> {
                 '}';
     }
 
+
     @Override
     public int compareTo(Stu stu) {
         return this.stuNo - stu.stuNo;
     }
 }
+
+
+
