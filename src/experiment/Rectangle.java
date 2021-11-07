@@ -25,11 +25,11 @@ class Cuboid {
         return this.rectangle.getArea() * this.height;
     }
 }
-//class Test {
-//    public static void main(String[] args) {
-//        Rectangle rectangle = new Rectangle(10, 5);
-//        System.out.println("长方形的面积为:" + rectangle.getArea());
-//        Cuboid cuboid = new Cuboid(rectangle, 5);
-//        System.out.println("长方体的体积为:" + cuboid.getVolume());
-//    }
-//}
+class Test2 {
+    public static void main(String[] args) {
+        Rectangle rectangle = new Rectangle(10, 5);
+        System.out.println("长方形的面积为:" + rectangle.getArea());
+        Cuboid cuboid = new Cuboid(rectangle, 5);
+        System.out.println("长方体的体积为:" + cuboid.getVolume());
+    }
+}

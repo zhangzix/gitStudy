@@ -1,6 +1,6 @@
 package experiment;
 
-import java.util.Random;
+import java.util.Scanner;
 
 public interface Shape {
     double getArea();//求一个形状的面积
@@ -78,18 +78,21 @@ class Square implements Shape {
 }
 
 class Test {
-    private static String getShape(Shape shape) {
-        return shape.getStatus();
-    }
-
     public static void main(String[] args) {
-        Shape shape;
-        if (new Random().nextInt() % 2 == 0) {//偶数圆
-            shape = new Circle(5);
-        } else {//否则长方形
-            shape = new Square(10, 5);
+        try {
+            double radius = getRadius();
+            Shape circle = new Circle(radius);
+            System.out.println("图形为" + circle.getStatus() + "，半径为:" + radius + ",面积为:" + circle.getArea());
+        } catch (Exception e) {
+            System.out.println("请重新输入半径，半径不能为负数");
         }
-        System.out.println(getShape(shape));
-        System.out.println(shape);
+    }
+    public static double getRadius() throws Exception {
+        System.out.println("请输入半径");
+        Scanner scanner = new Scanner(System.in);
+        double v = scanner.nextDouble();
+        if (v < 0)
+            throw new Exception("不能为负数");
+        return v;
     }
 }

@@ -18,3 +18,21 @@ public class Test3 {
         System.out.println("长方形的周长:" + rectangle.getC());
     }
 }
+
+abstract class A {
+    private String name;
+
+}
+
+class B {
+    void C() {
+
+    }
+}
+
+class C extends B {
+    @Override
+        protected void C() {
+
+    }
+}
