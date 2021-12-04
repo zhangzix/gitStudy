@@ -1,9 +1,12 @@
 package experiment;
 
+/**
+ * 实验九 多线程程序设计
+ */
 public class Example9 {
     public static void main(String[] args) {
-//        new ExampleT1();
-//        new ExampleT2();
+        new ExampleT1();
+        new ExampleT2();
         new ExampleT3();
     }
 }
