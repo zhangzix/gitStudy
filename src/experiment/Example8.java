@@ -10,7 +10,7 @@ import java.util.Random;
 /**
  * 实验8 图形用户界面设计
  */
-public class example8 {
+public class Example8 {
     public static void main(String[] args) {
         JFrame frame = new Test1JFrame();
     }
