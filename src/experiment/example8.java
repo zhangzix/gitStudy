@@ -12,8 +12,7 @@ import java.util.Random;
  */
 public class example8 {
     public static void main(String[] args) {
-        JFrame frame = new Test5JFrame();
-
+        JFrame frame = new Test1JFrame();
     }
 }
 
@@ -26,10 +25,10 @@ public class example8 {
 class Test1JFrame extends JFrame {
     JPanel panelBtn = new JPanel();
     JPanel panelText = new JPanel();
-    JButton btnAdd = new JButton("加");//加
-    JButton btnSub = new JButton("减");//减
-    JButton btnMui = new JButton("乘");//乘
-    JButton btnDiv = new JButton("除");//除
+    JButton btnAdd = new JButton("＋");//加
+    JButton btnSub = new JButton("－");//减
+    JButton btnMui = new JButton("×");//乘
+    JButton btnDiv = new JButton("÷");//除
     JTextField text1 = new JTextField(10);
     JTextField text2 = new JTextField(10);
     JTextField JTextRes = new JTextField(10);
@@ -44,30 +43,19 @@ class Test1JFrame extends JFrame {
             double num1 = Double.parseDouble(text1.getText());
             double num2 = Double.parseDouble(text2.getText());
             switch (type) {
-                case '+':
-                    Res = num1 + num2;
-                    break;
-                case '-':
-                    Res = num1 - num2;
-                    break;
-                case '*':
-                    Res = num1 * num2;
-                    break;
-                case '/':
-                    Res = num1 / num2;
-                    break;
-                default:
-                    throw new Exception("出现未知算法");
+                case '＋':Res = num1 + num2;break;
+                case '－':Res = num1 - num2;break;
+                case '×': Res = num1 * num2;break;
+                case '÷': Res = num1 / num2;break;
+                default: throw new Exception("出现未知算法");
             }
             JTextRes.setText(formatString(Res));
         } catch (NumberFormatException e) {
             System.out.println("NumberFormatException异常");
             JOptionPane.showMessageDialog(panelText, "请输入数字", "警告", JOptionPane.WARNING_MESSAGE);
-
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
     public Test1JFrame() {
@@ -86,30 +74,17 @@ class Test1JFrame extends JFrame {
         setVisible(true);
 
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        btnAdd.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                getNum('+');
-            }
-        });
-        btnSub.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                getNum('-');
-            }
-        });
-        btnMui.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                getNum('*');
-            }
-        });
-        btnDiv.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                getNum('/');
-            }
-        });
+
+        btnAdd.addActionListener(new MyAction());
+        btnSub.addActionListener(new MyAction());
+        btnMui.addActionListener(new MyAction());
+        btnDiv.addActionListener(new MyAction());
+    }
+    class MyAction implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            getNum(e.getActionCommand().charAt(0));
+        }
     }
 }
 
@@ -129,14 +104,11 @@ class Test2JFrame extends JFrame {
     JTextField JTextRes = new JTextField(15);
     JLabel operator = new JLabel(" ? ");
     JLabel Info = new JLabel();
-    int num1;
-    int num2;
-
+    int num1;int num2;
     public Test2JFrame() {
         setTitle("算数测试");
         setSize(600, 160);
         setVisible(true);
-
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setContentPane(panel);
         panel.add(btnGet);
@@ -151,14 +123,11 @@ class Test2JFrame extends JFrame {
         text2.setBackground(Color.lightGray);
         text1.setCaretColor(Color.BLACK);
         text2.setCaretColor(Color.BLACK);
-//        text1.setEnabled(false);
-//        text2.setEnabled(false);
         panel.add(JTextRes);
         panel.add(btnSubmit);
         panel.add(Info);
+        operator.setFont(new Font("黑体",Font.BOLD,20));
         panel.repaint();
-        repaint();
-
         btnGet.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -173,13 +142,16 @@ class Test2JFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    int i = Integer.parseInt(JTextRes.getText());
-                    if (i == (num1 + num2)) {
-                        Info.setText("恭喜你，答对了！");
-                    } else {
-                        Info.setText("抱歉，您答错了！");
+                    int tRes = Integer.parseInt(JTextRes.getText());
+                    int res=0;
+                    switch (operator.getText()) {
+                        case "＋": res = num1 + num2;break;
+                        case "－":res = num1 - num2;break;
+                        case "×": res = num1 * num2;break;
+                        case "÷":res = num1 / num2;break;
                     }
-
+                    if (res == tRes) Info.setText("恭喜你，答对了！");
+                    else Info.setText("抱歉，您答错了！" + res);
                 } catch (NumberFormatException e1) {
                     JOptionPane.showMessageDialog(panel, "请输入数字", "警告", JOptionPane.WARNING_MESSAGE);
                 } catch (Exception E) {
@@ -188,7 +160,6 @@ class Test2JFrame extends JFrame {
             }
         });
     }
-
 }
 
 /**
@@ -208,6 +179,7 @@ class Test3JFrame extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
         add(choice, BorderLayout.NORTH);
+        choice.setFont(new Font("黑体", Font.BOLD, 16));
         textArea.setFont(new Font("黑体", Font.PLAIN, 20));
         textArea.setAlignmentX(CENTER_ALIGNMENT);
         textArea.setAlignmentY(CENTER_ALIGNMENT);
@@ -240,7 +212,7 @@ class Test4JFrame extends JFrame {
     JPanel panel = new JPanel();
 
     public Test4JFrame() {
-        setTitle("第四题，适配器");
+        setTitle("第四题");
         setSize(400, 600);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setVisible(true);
